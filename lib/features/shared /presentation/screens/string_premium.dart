@@ -132,7 +132,7 @@ class StringPremiumScreen extends StatelessWidget {
               context.go('/messages'); // Replace with your messages route
               break;
             case 3:
-              context.go('/profile'); // Replace with your profile route
+              context.go('/appSettings2'); // Replace with your profile route
               break;
           }
         },

@@ -61,8 +61,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
               Center(child: Container(
                 alignment: Alignment.center,
               child: Text('When were you born?',style: TextStyle(fontFamily: 'Bold',fontSize: 25),)),),
-                                SizedBox(height: 20),
-                                 Padding(
+              SizedBox(height: 20),
+                      Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: CustomInput(
                       

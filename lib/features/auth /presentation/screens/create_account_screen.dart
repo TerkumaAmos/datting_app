@@ -33,7 +33,7 @@ class CreateAccountScreen extends StatelessWidget {
               const SizedBox(height: 200),
                 const Center(
                   child: Text(
-                    "Create an Account.",
+                    "Create an Account",
                     style: TextStyle(fontFamily: "Bold", fontSize: 28),
                   ),
                 ),

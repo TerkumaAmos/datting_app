@@ -8,6 +8,8 @@ import 'package:datting_app/features/auth%20/presentation/screens/opt_screen.dar
 import 'package:datting_app/features/auth%20/presentation/screens/select_screen.dart';
 import 'package:datting_app/features/auth%20/presentation/screens/sign_in_screen.dart';
 import 'package:datting_app/features/auth%20/presentation/screens/verify_screen.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/app_setting.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/app_setting2.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/home_page_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_profile.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_screen.dart';
@@ -36,11 +38,13 @@ class RouteNames{
   static const match = 'match';
   static const matchScreen = 'matchScreen';
   static const stringPremium = 'stringPremium';
+  static const appSettings = 'appSettings';
+  static const appSettings2 = 'appSettings2';
 
 }
 
 final GoRouter router =GoRouter(
-  initialLocation: '/stringPremium',
+  initialLocation: '/appSettings2',
   
   routes:[
   GoRoute(
@@ -134,7 +138,16 @@ final GoRouter router =GoRouter(
       name: RouteNames.stringPremium,
       builder: (context, state) =>StringPremiumScreen(),
     ),
-    
+     GoRoute(
+      path: '/appSettings',
+      name: RouteNames.appSettings,
+      builder: (context, state) =>AppSettingScreen(),
+    ),
+    GoRoute(
+      path: '/appSettings2',
+      name: RouteNames.appSettings2,
+      builder: (context, state) =>AppSetting2Screen(),
+    ),
     
     
     

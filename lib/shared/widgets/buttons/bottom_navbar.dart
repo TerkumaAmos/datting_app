@@ -23,7 +23,8 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.transparent,
+      
+      backgroundColor: Colors.black,
       elevation: 0,
       type: BottomNavigationBarType.fixed,
       selectedItemColor: const Color(0xFFFFD700),
@@ -36,7 +37,7 @@ class CustomBottomNavBar extends StatelessWidget {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: _buildNavIcon(Iconsax.heart, isActive: selectedIndex == 1),
+          icon: _buildNavIcon(Iconsax.heart_copy, isActive: selectedIndex == 1),
           label: '',
         ),
         BottomNavigationBarItem(
@@ -44,7 +45,7 @@ class CustomBottomNavBar extends StatelessWidget {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: _buildNavIcon(Iconsax.profile_tick, isActive: selectedIndex == 3),
+          icon: _buildNavIcon(Iconsax.profile_tick_copy, isActive: selectedIndex == 3),
           label: '',
         ),
       ],
