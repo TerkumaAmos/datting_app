@@ -159,9 +159,9 @@ class AppSetting2Screen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset('assets/images/Mask groupp.png'),
-                      Image.asset('assets/images/Mask groupp.png'),
-                      Image.asset('assets/images/Mask groupp.png'),
+                      Image.asset('assets/images/mask.png',width: 90.84,height: 90.84,),
+                      Image.asset('assets/images/mask.png',width: 90.84,height: 90.84,),
+                      Image.asset('assets/images/mask.png',width: 90.84,height: 90.84,),
                     ],
                   ),
                 ),
@@ -171,9 +171,9 @@ class AppSetting2Screen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset('assets/images/Mask groupp.png'),
-                      Image.asset('assets/images/Mask groupp.png'),
-                      Image.asset('assets/images/Mask groupp.png'),
+                      Image.asset('assets/images/mask.png',width: 90.84,height: 90.84,),
+                      Image.asset('assets/images/mask.png',width: 90.84,height: 90.84,),
+                      Image.asset('assets/images/mask.png',width: 90.84,height: 90.84,),
                     ],
                   ),
                 ),
