@@ -39,7 +39,18 @@ extendBodyBehindAppBar: true, // Key: Extend the body behind the AppBar
                 child: Row(
                   children: [
                     Icon(Iconsax.setting_2),SizedBox(width: 10),
-                    Text('App Settings',style: TextStyle(fontFamily: 'Regular',fontSize: 22),)
+                    Text('App Settings',style: TextStyle(fontFamily: 'Regular',fontSize: 22),),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  children: [
+                    Text('Contact us',style: TextStyle(fontSize: 18,fontFamily: 'Regular'),),
+                    Icon(Icons.arrow_forward_ios)
                   ],
                 ),
               )

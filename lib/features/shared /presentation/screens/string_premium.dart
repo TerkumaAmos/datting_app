@@ -72,7 +72,7 @@ class StringPremiumScreen extends StatelessWidget {
                 title: 'Bronze',
                 price: '\$6.99',
                 heartsPrefix: 'Get ',
-                heartsNumber: '688',
+                heartsNumber: '220',
                 heartsSuffix: ' Hearts',
                 feature: 'See who likes your profile',
                 buttonText: 'Buy Bronze Premium',

@@ -10,10 +10,12 @@ import 'package:datting_app/features/auth%20/presentation/screens/sign_in_screen
 import 'package:datting_app/features/auth%20/presentation/screens/verify_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/app_setting.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/app_setting2.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/contact_us.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/home_page_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_profile.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/onboarding/onboarding_screen3.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/privacy_policy.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/string_premium.dart';
 import 'package:datting_app/features/shared%20/presentation/splash_screen.dart';
 import 'package:datting_app/shared/widgets/pageview/onboarding_pageview.dart';
@@ -40,11 +42,13 @@ class RouteNames{
   static const stringPremium = 'stringPremium';
   static const appSettings = 'appSettings';
   static const appSettings2 = 'appSettings2';
+  static const contact ='contact';
+  static const privacy =' privacy';
 
 }
 
 final GoRouter router =GoRouter(
-  initialLocation: '/appSettings2',
+  initialLocation: '/stringPremium',
   
   routes:[
   GoRoute(
@@ -147,6 +151,16 @@ final GoRouter router =GoRouter(
       path: '/appSettings2',
       name: RouteNames.appSettings2,
       builder: (context, state) =>AppSetting2Screen(),
+    ),
+    GoRoute(
+      path: '/contact',
+      name: RouteNames.contact,
+      builder: (context, state) =>ContactUsScreen(),
+    ),
+    GoRoute(
+      path: '/privacy',
+      name: RouteNames.privacy,
+      builder: (context, state) =>PrivacyPolicyScreen(),
     ),
     
     

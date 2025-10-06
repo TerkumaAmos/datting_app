@@ -70,8 +70,9 @@ class PremiumCardWidget extends StatelessWidget {
                         text: '$title ',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: "Regular"
+
                         ),
                       ),
                       TextSpan(
@@ -79,7 +80,6 @@ class PremiumCardWidget extends StatelessWidget {
                         style: const TextStyle(
                           color: Color(0xFFFFD700), // Yellow color for price
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -95,7 +95,7 @@ class PremiumCardWidget extends StatelessWidget {
                         style: const TextStyle(
                           color: Colors.white, // White for prefix
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: "Regular"
                         ),
                       ),
                       TextSpan(
@@ -111,7 +111,7 @@ class PremiumCardWidget extends StatelessWidget {
                         style: const TextStyle(
                           color: Colors.white, // White for suffix
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: "Regular"
                         ),
                       ),
                     ],
@@ -122,9 +122,11 @@ class PremiumCardWidget extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
+                                              fontFamily: "Regular"
+
                   ),
                 ),
-                const Spacer(), // Pushes the button to the bottom
+                const Spacer(), 
                 if (isYellowHalf)
                   Center(
                     child: Text(
