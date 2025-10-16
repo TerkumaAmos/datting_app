@@ -44,11 +44,11 @@ class RouteNames{
   static const appSettings2 = 'appSettings2';
   static const contact ='contact';
   static const privacy =' privacy';
-
+   static const messages =' messages';
 }
 
 final GoRouter router =GoRouter(
-  initialLocation: '/stringPremium',
+  initialLocation: '/match',
   
   routes:[
   GoRoute(
@@ -162,6 +162,7 @@ final GoRouter router =GoRouter(
       name: RouteNames.privacy,
       builder: (context, state) =>PrivacyPolicyScreen(),
     ),
+    // GoRoute(path: '')
     
     
     
