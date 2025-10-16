@@ -2,8 +2,10 @@ import 'package:datting_app/core/theme/app_colors.dart';
 import 'package:datting_app/features/shared%20/presentation/widgets/icon_text_button.dart';
 import 'package:datting_app/shared/widgets/buttons/back_button.dart';
 import 'package:datting_app/shared/widgets/gradient/app_gradient.dart';
+import 'package:datting_app/shared/widgets/inputs/app_inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -15,6 +17,7 @@ class MessageScreen extends StatefulWidget {
 class _MessageScreenState extends State<MessageScreen> {
   bool _isMessageClicked = false;
   bool _isLikesClicked = false;
+  TextEditingController searchController =TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +77,14 @@ class _MessageScreenState extends State<MessageScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: 20),
+                CustomInput(
+                  controller: searchController,type: InputType.email,
+                      hintText: 'Email',hintFontFamily: 'Regular',hintFontSize: 13,
+                      keyboardType: TextInputType.emailAddress,
+                      borderRadius: 50,
+                     // suffixIconSvgPath: Iconsax.search_favorite,
+                      )
               ],
             ),
           ],
