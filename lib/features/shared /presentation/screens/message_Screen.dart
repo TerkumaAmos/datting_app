@@ -78,17 +78,18 @@ class _MessageScreenState extends State<MessageScreen> {
                 ),
                 SizedBox(height: 20),
                 CustomInput(
-                  
-                  width: 370,
-     height: 38,
-                  controller: searchController,type: InputType.email,
-                      hintText: 'Search for peoples and chats',hintFontFamily: 'Regular',hintFontSize: 13,
-                      keyboardType: TextInputType.emailAddress,
-                      borderRadius: 10,
-                      prefixIcon: Icon(Icons.search),
-                      
-                     // suffixIconSvgPath: Iconsax.search_favorite,
-                      )
+  width: 370,
+  height: 48, // Increased height to avoid clipping
+  controller: searchController,
+  type: InputType.text, // Changed to text for search
+  hintText: 'Search for peoples and chats',
+  hintFontFamily: 'Regular', // Ensure this font is registered
+  hintFontSize: 13,
+  keyboardType: TextInputType.text,
+  borderRadius: 10,
+  prefixIcon: const Icon(Icons.search, size: 20, color: AppColors.black),
+  validator: (value) => null, // Disable validation for search
+)
               ],
             ),
           ],

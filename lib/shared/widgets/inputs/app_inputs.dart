@@ -21,19 +21,19 @@ class CustomInput extends StatefulWidget {
   final bool enabled;
   final int? maxLines;
   final int? minLines;
-  final String? prefixIconSvgPath; // SVG path for prefix icon
-  final String? prefixIconSvgPath1; // Second SVG path for prefix icon
-  final Icon? prefixIcon; // New: Custom Icon for prefix
-  final String? suffixIconSvgPath; // SVG path for suffix icon
-  final Icon? suffixIcon; // New: Custom Icon for suffix
+  final String? prefixIconSvgPath;
+  final String? prefixIconSvgPath1;
+  final Icon? prefixIcon;
+  final String? suffixIconSvgPath;
+  final Icon? suffixIcon;
   final double? prefixIconWidth;
   final double? prefixIconHeight;
   final double? suffixIconWidth;
   final double? suffixIconHeight;
   final double? borderRadius;
   final TextInputType? keyboardType;
-  final double? width; // From previous request
-  final double? height; // From previous request
+  final double? width;
+  final double? height;
 
   const CustomInput({
     super.key,
@@ -56,9 +56,9 @@ class CustomInput extends StatefulWidget {
     this.minLines,
     this.prefixIconSvgPath,
     this.prefixIconSvgPath1,
-    this.prefixIcon, // New: Custom Icon for prefix
+    this.prefixIcon,
     this.suffixIconSvgPath,
-    this.suffixIcon, // New: Custom Icon for suffix
+    this.suffixIcon,
     this.prefixIconWidth,
     this.prefixIconHeight,
     this.suffixIconWidth,
@@ -77,25 +77,39 @@ class _CustomInputState extends State<CustomInput> {
   bool _obscureText = true;
 
   @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(() {
+      print('Controller text: ${widget.controller.text}'); // Debug input
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isPassword = widget.type == InputType.password;
 
     final inputField = TextFormField(
       controller: widget.controller,
       obscureText: isPassword ? _obscureText : false,
+      style: TextStyle(
+        fontFamily: widget.hintFontFamily ?? 'Regular',
+        fontSize: widget.hintFontSize ?? 13.0,
+        color: Colors.black,
+      ),
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: TextStyle(
           fontFamily: widget.hintFontFamily ?? 'Bold',
           fontSize: widget.hintFontSize,
           fontWeight: FontWeight.bold,
+          color: Colors.grey,
         ),
         prefixIcon: _getPrefixIcon(),
         suffixIcon: _getSuffixIcon(),
         filled: true,
         fillColor: Colors.transparent,
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 16,
+          vertical: 8,
           horizontal: 16,
         ),
         border: OutlineInputBorder(
@@ -116,8 +130,8 @@ class _CustomInputState extends State<CustomInput> {
       autofocus: widget.autofocus,
       readOnly: widget.readOnly,
       enabled: widget.enabled,
-      maxLines: isPassword ? 1 : widget.maxLines,
-      minLines: widget.minLines,
+      maxLines: isPassword ? 1 : (widget.maxLines ?? 1),
+      minLines: widget.minLines ?? 1,
       autocorrect: !isPassword,
       enableSuggestions: !isPassword,
       autofillHints: widget.type == InputType.email ? null : null,
@@ -150,22 +164,20 @@ class _CustomInputState extends State<CustomInput> {
   }
 
   Widget? _getPrefixIcon() {
-    // Prioritize custom Icon if provided
     if (widget.prefixIcon != null) {
       return Padding(
-        padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 4.0),
         child: widget.prefixIcon,
       );
     }
 
-    // Fallback to SVG icons if provided
     if (widget.prefixIconSvgPath != null || widget.prefixIconSvgPath1 != null) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (widget.prefixIconSvgPath != null)
             Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 8.0),
+              padding: const EdgeInsets.only(left: 8.0, right: 4.0),
               child: SvgPicture.asset(
                 widget.prefixIconSvgPath!,
                 width: widget.prefixIconWidth,
@@ -174,7 +186,7 @@ class _CustomInputState extends State<CustomInput> {
             ),
           if (widget.prefixIconSvgPath1 != null)
             Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(right: 4.0),
               child: SvgPicture.asset(
                 widget.prefixIconSvgPath1!,
                 width: widget.prefixIconWidth,
@@ -189,15 +201,13 @@ class _CustomInputState extends State<CustomInput> {
   }
 
   Widget? _getSuffixIcon() {
-    // Prioritize custom Icon for suffix if provided and not a password field
     if (widget.suffixIcon != null && widget.type != InputType.password) {
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: widget.suffixIcon,
       );
     }
 
-    // Handle password field toggle icon
     if (widget.type == InputType.password) {
       return IconButton(
         icon: widget.suffixIcon != null
@@ -215,10 +225,9 @@ class _CustomInputState extends State<CustomInput> {
       );
     }
 
-    // Fallback to SVG suffix icon if provided
     if (widget.suffixIconSvgPath != null) {
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: SvgPicture.asset(
           widget.suffixIconSvgPath!,
           width: widget.suffixIconWidth,
