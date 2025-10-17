@@ -5,7 +5,6 @@ import 'package:datting_app/shared/widgets/gradient/app_gradient.dart';
 import 'package:datting_app/shared/widgets/inputs/app_inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -79,10 +78,15 @@ class _MessageScreenState extends State<MessageScreen> {
                 ),
                 SizedBox(height: 20),
                 CustomInput(
+                  
+                  width: 370,
+     height: 38,
                   controller: searchController,type: InputType.email,
-                      hintText: 'Email',hintFontFamily: 'Regular',hintFontSize: 13,
+                      hintText: 'Search for peoples and chats',hintFontFamily: 'Regular',hintFontSize: 13,
                       keyboardType: TextInputType.emailAddress,
-                      borderRadius: 50,
+                      borderRadius: 10,
+                      prefixIcon: Icon(Icons.search),
+                      
                      // suffixIconSvgPath: Iconsax.search_favorite,
                       )
               ],

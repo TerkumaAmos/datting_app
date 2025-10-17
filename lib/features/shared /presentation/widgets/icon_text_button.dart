@@ -1,3 +1,4 @@
+import 'package:datting_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class IconTextButton extends StatelessWidget {
@@ -22,7 +23,7 @@ class IconTextButton extends StatelessWidget {
         width: 149,
         height: 48,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.yellow : Colors.transparent,
+          color: isSelected ? AppColors.primary: Colors.transparent,
           borderRadius: BorderRadius.circular(20), // Consistent rounded corners
         ),
         child: Row(
