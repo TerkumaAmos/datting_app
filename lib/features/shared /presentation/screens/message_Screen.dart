@@ -1,5 +1,6 @@
 import 'package:datting_app/core/theme/app_colors.dart';
 import 'package:datting_app/features/shared%20/presentation/widgets/icon_text_button.dart';
+import 'package:datting_app/features/shared%20/widgets/custom_post_widget.dart';
 import 'package:datting_app/shared/widgets/buttons/back_button.dart';
 import 'package:datting_app/shared/widgets/container/custom_positioned_circle.dart';
 import 'package:datting_app/shared/widgets/gradient/app_gradient.dart';
@@ -112,50 +113,27 @@ class _MessageScreenState extends State<MessageScreen> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CircleAvatar(
-                        radius: 30,
-                        backgroundImage: Image(image: AssetImage('assets/images/groupp.png')).image,
-                      ),
+                      // CircleAvatar(
+                      //   radius: 30,
+                      //   backgroundImage: Image(image: AssetImage('assets/images/groupp.png')).image,
+                      // ),
                       SizedBox(width: 16.0),
                       Expanded(
-                        child: Column(
+                        child: 
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'T.E.C.H_uma',
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                                ),
-                                Text(
-                                  '5 min ago',
-                                  style: TextStyle(color: Color(0xff4285f4), fontSize: 12),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 8.0),
-                            Row(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                              children: [
-                                Text(
-                                  'Awsome what kind of stiff do you...',
-                                  style: TextStyle(fontSize: 14,fontFamily: 'Regular'),
-                                  
-                                  
-                                ),
-                                 CustomPositionedCircle(
-                                  width: 28,
-                                  height: 28,
-                                  color: Colors.blue,
-                                  text: '03',
-                                  textColor: Colors.white,
-                        
-                      ),
-                              
-                              ],
-                            ),
+                           CustomPostWidget(
+              backgroundImage: const AssetImage('assets/images/groupp.png'),
+              titleText: 'T.E.C.H_uma',
+              timeText: '5 min ago',
+              timeTextColor: const Color(0xff4285f4),
+              descriptionText: 'Awsome what kind of stiff do you...',
+              showPositionedCircle: true,
+              circleText: '03',
+              circleColor: Colors.blue,
+              circleTextColor: Colors.white,
+            ),
                           ],
                         ),
                       ),
