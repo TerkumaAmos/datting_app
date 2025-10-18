@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; 
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum InputType { email, text, password }
@@ -34,6 +35,7 @@ class CustomInput extends StatefulWidget {
   final TextInputType? keyboardType;
   final double? width;
   final double? height;
+  final bool enableEmoji; 
 
   const CustomInput({
     super.key,
@@ -67,6 +69,7 @@ class CustomInput extends StatefulWidget {
     this.keyboardType,
     this.width,
     this.height,
+    this.enableEmoji = true, // Defaults to false
   });
 
   @override
@@ -105,7 +108,7 @@ class _CustomInputState extends State<CustomInput> {
           color: Colors.grey,
         ),
         prefixIcon: _getPrefixIcon(),
-        suffixIcon: _getSuffixIcon(),
+        suffixIcon: _getSuffixIcon(), // Updated to include optional emoji
         filled: true,
         fillColor: Colors.transparent,
         contentPadding: const EdgeInsets.symmetric(
@@ -201,7 +204,7 @@ class _CustomInputState extends State<CustomInput> {
   }
 
   Widget? _getSuffixIcon() {
-    if (widget.suffixIcon != null && widget.type != InputType.password) {
+    if (widget.suffixIcon != null && widget.type != InputType.password && !widget.enableEmoji) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: widget.suffixIcon,
@@ -225,7 +228,20 @@ class _CustomInputState extends State<CustomInput> {
       );
     }
 
-    if (widget.suffixIconSvgPath != null) {
+    if (widget.enableEmoji) {
+      return IconButton(
+        icon: const Icon(Icons.emoji_emotions_outlined),
+        onPressed: () {
+          // Request emoji keyboard
+          FocusScope.of(context).requestFocus(FocusNode());
+          SystemChannels.textInput.invokeMethod('TextInput.show').then((_) {
+            SystemChannels.textInput.invokeMethod('TextInput.setEditableSizeAndTransform');
+          });
+        },
+      );
+    }
+
+    if (widget.suffixIconSvgPath != null && !widget.enableEmoji) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: SvgPicture.asset(
