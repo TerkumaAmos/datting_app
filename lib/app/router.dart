@@ -10,6 +10,7 @@ import 'package:datting_app/features/auth%20/presentation/screens/sign_in_screen
 import 'package:datting_app/features/auth%20/presentation/screens/verify_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/app_setting.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/app_setting2.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/chat_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/contact_us.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/home_page_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_profile.dart';
@@ -46,6 +47,7 @@ class RouteNames{
   static const contact ='contact';
   static const privacy =' privacy';
    static const messages =' messages';
+   static const chatscreen =' chatscreen';
 }
 
 final GoRouter router =GoRouter(
@@ -163,7 +165,9 @@ final GoRouter router =GoRouter(
       name: RouteNames.privacy,
       builder: (context, state) =>PrivacyPolicyScreen(),
     ),
-    GoRoute(path: '/messages',name: RouteNames.messages,builder: (context, state)=>MessageScreen())
+    GoRoute(path: '/messages',name: RouteNames.messages,builder: (context, state)=>MessageScreen()),
+
+    GoRoute(path: '/chatscreen',name: RouteNames.chatscreen,builder: (context, state)=>ChatScreen()),
     
     
     
