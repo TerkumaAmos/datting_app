@@ -51,7 +51,7 @@ class RouteNames{
 }
 
 final GoRouter router =GoRouter(
-  initialLocation: '/messages',
+  initialLocation: '/chatscreen',
   
   routes:[
   GoRoute(
