@@ -149,7 +149,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       const SizedBox(width: 8),
                       CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/images/Groupp 28.png'), // Replace with receiver's image
+                        backgroundImage: AssetImage('assets/images/Groupp 28.png'), 
                         onBackgroundImageError: (_, __) => const Icon(Icons.error),
                       ),
                     ],
@@ -158,17 +158,29 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             CustomInput(
-               width: 370,
-                    height: 48,
-                   hintText: 'write a message',
-                    type: InputType.text,
-                    hintFontFamily: 'Regular',
-                    hintFontSize: 13,
-                    keyboardType: TextInputType.text,
-                    borderRadius: 20,
-                    validator: (value) => null,
-                    enableEmoji: true,
-              controller:messageController ),
+  width: 370,
+  height: 48,
+  hintText: 'write a message',
+  type: InputType.text,
+  hintFontFamily: 'Regular',
+  hintFontSize: 13,
+  keyboardType: TextInputType.text,
+  borderRadius: 20,
+  validator: (value) => null,
+  enableEmoji: true,
+  controller: messageController,
+  sendIcon: const Icon(Icons.send, color: Colors.black), 
+  sendIconWidth: 24, 
+  sendIconHeight: 24,
+  onSendPressed: () {
+    // Handle send action
+    print('Send pressed: ${messageController.text}');
+    // Example: Clear the input after sending
+    messageController.clear();
+  },
+),
+
+
               SizedBox(height: 50),
           ],
         

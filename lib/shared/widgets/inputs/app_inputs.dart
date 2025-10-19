@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; 
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum InputType { email, text, password }
@@ -27,15 +27,20 @@ class CustomInput extends StatefulWidget {
   final Icon? prefixIcon;
   final String? suffixIconSvgPath;
   final Icon? suffixIcon;
+  final String? sendIconSvgPath; // New property for send icon SVG
+  final Icon? sendIcon; // New property for send icon
   final double? prefixIconWidth;
   final double? prefixIconHeight;
   final double? suffixIconWidth;
   final double? suffixIconHeight;
+  final double? sendIconWidth; // New property for send icon width
+  final double? sendIconHeight; // New property for send icon height
   final double? borderRadius;
   final TextInputType? keyboardType;
   final double? width;
   final double? height;
-  final bool enableEmoji; 
+  final bool enableEmoji;
+  final VoidCallback? onSendPressed; // New callback for send icon press
 
   const CustomInput({
     super.key,
@@ -61,15 +66,20 @@ class CustomInput extends StatefulWidget {
     this.prefixIcon,
     this.suffixIconSvgPath,
     this.suffixIcon,
+    this.sendIconSvgPath, // Added
+    this.sendIcon, // Added
     this.prefixIconWidth,
     this.prefixIconHeight,
     this.suffixIconWidth,
     this.suffixIconHeight,
+    this.sendIconWidth, // Added
+    this.sendIconHeight, // Added
     this.borderRadius,
     this.keyboardType,
     this.width,
     this.height,
-    this.enableEmoji = true, // Defaults to false
+    this.enableEmoji = true,
+    this.onSendPressed, // Added
   });
 
   @override
@@ -108,7 +118,7 @@ class _CustomInputState extends State<CustomInput> {
           color: Colors.grey,
         ),
         prefixIcon: _getPrefixIcon(),
-        suffixIcon: _getSuffixIcon(), // Updated to include optional emoji
+        suffixIcon: _getSuffixIcon(),
         filled: true,
         fillColor: Colors.transparent,
         contentPadding: const EdgeInsets.symmetric(
@@ -228,16 +238,34 @@ class _CustomInputState extends State<CustomInput> {
       );
     }
 
-    if (widget.enableEmoji) {
-      return IconButton(
-        icon: const Icon(Icons.emoji_emotions_outlined),
-        onPressed: () {
-          // Request emoji keyboard
-          FocusScope.of(context).requestFocus(FocusNode());
-          SystemChannels.textInput.invokeMethod('TextInput.show').then((_) {
-            SystemChannels.textInput.invokeMethod('TextInput.setEditableSizeAndTransform');
-          });
-        },
+    if (widget.enableEmoji || widget.sendIcon != null || widget.sendIconSvgPath != null) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Emoji Icon
+          if (widget.enableEmoji)
+            IconButton(
+              icon: const Icon(Icons.emoji_emotions_outlined),
+              onPressed: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                SystemChannels.textInput.invokeMethod('TextInput.show').then((_) {
+                  SystemChannels.textInput.invokeMethod('TextInput.setEditableSizeAndTransform');
+                });
+              },
+            ),
+          // Send Icon
+          if (widget.sendIcon != null || widget.sendIconSvgPath != null)
+            IconButton(
+              icon: widget.sendIcon != null
+                  ? widget.sendIcon!
+                  : SvgPicture.asset(
+                      widget.sendIconSvgPath!,
+                      width: widget.sendIconWidth,
+                      height: widget.sendIconHeight,
+                    ),
+              onPressed: widget.onSendPressed,
+            ),
+        ],
       );
     }
 
