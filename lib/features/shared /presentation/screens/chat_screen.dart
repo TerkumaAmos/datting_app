@@ -26,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
           color: AppColors.black,
           size: 24,
           onPressed: () {
-            context.go('/enterNum');
+            context.go('/messages');
           },
         ),
         backgroundColor: Colors.transparent,
@@ -169,7 +169,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     validator: (value) => null,
                     enableEmoji: true,
               controller:messageController ),
-              SizedBox(height: 20),
+              SizedBox(height: 50),
           ],
         
         ),
