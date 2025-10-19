@@ -92,7 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                             child: const Text(
                               'Hi, Evan',
-                              style: TextStyle(fontSize: 16, color: Colors.black),
+                              style: TextStyle(fontSize: 13, color: Colors.black,fontFamily: 'Regular'),
                             ),
                           ),
                           Container(
@@ -103,15 +103,14 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                             child: const Text(
                               'How are you!',
-                              style: TextStyle(fontSize: 16, color: Colors.black),
+                              style: TextStyle(fontSize: 13, color: Colors.black,fontFamily: 'Regular'),
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16), // Space between sender and receiver
-                  // Receiver's messages (e.g., Evan)
+                  const SizedBox(height: 16), 
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end, // Align to the right
@@ -123,24 +122,24 @@ class _ChatScreenState extends State<ChatScreen> {
                             margin: const EdgeInsets.only(bottom: 4), // Space between containers
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: Colors.yellow[600], // Yellow bubble
+                              color: Colors.yellow[600],
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Text(
                               'Hi, Elwa',
-                              style: TextStyle(fontSize: 16, color: Colors.black),
+                              style: TextStyle(fontSize: 13, color: Colors.black,fontFamily: 'Regular'),
                               textAlign: TextAlign.right,
                             ),
                           ),
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: Colors.yellow[600], // Yellow bubble
+                              color: Colors.yellow[600], 
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Text(
                               'I am good!',
-                              style: TextStyle(fontSize: 16, color: Colors.black),
+                              style: TextStyle(fontSize: 13, color: Colors.black,fontFamily: 'Regular'),
                               textAlign: TextAlign.right,
                             ),
                           ),
@@ -173,11 +172,11 @@ class _ChatScreenState extends State<ChatScreen> {
   sendIconWidth: 24, 
   sendIconHeight: 24,
   onSendPressed: () {
-    // Handle send action
-    print('Send pressed: ${messageController.text}');
-    // Example: Clear the input after sending
-    messageController.clear();
-  },
+                if (messageController.text.isNotEmpty) {
+                  print('Sending message: ${messageController.text}');
+                  messageController.clear();
+                }
+              },
 ),
 
 
