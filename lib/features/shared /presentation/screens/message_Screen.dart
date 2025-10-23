@@ -13,7 +13,7 @@ class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
 
   @override
-  _MessageScreenState createState() => _MessageScreenState();
+  _MessageScreenState createState() => _MessageScreenState(); 
 }
 
 class _MessageScreenState extends State<MessageScreen> {
