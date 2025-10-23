@@ -50,7 +50,7 @@ class RouteNames {
   static const privacy = 'privacy';
   static const messages = 'messages';
   static const chatscreen = 'chatscreen';
-  static const likes = 'likes'; // New route name
+  static const likes = 'likes'; 
 }
 
 final GoRouter router = GoRouter(
