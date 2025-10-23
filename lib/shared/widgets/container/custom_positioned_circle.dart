@@ -54,18 +54,15 @@ class CustomPositionedCircle extends StatelessWidget {
     // safely used inside Row/Column/Flex without throwing ParentData errors.
   final hasStackAncestor = context.findAncestorWidgetOfExactType<Stack>() != null;
 
-    if (hasStackAncestor) {
-      return Positioned(
-        top: top,
-        left: left,
-        child: circle,
-      );
-    }
+    // if (hasStackAncestor) {
+    //   return Positioned(
+    //     top: top,
+    //     left: left,
+    //     child: circle,
+    //   );
+    // }
 
-    // Not inside a Stack: apply padding offsets instead of Positioned
-    return Padding(
-      padding: EdgeInsets.only(left: left ?? 0, top: top ?? 0),
-      child: circle,
-    );
+   // Not inside a Stack: apply padding offsets instead of Positioned
+    return circle;
   }
 }
