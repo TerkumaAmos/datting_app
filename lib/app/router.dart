@@ -8,11 +8,13 @@ import 'package:datting_app/features/auth%20/presentation/screens/opt_screen.dar
 import 'package:datting_app/features/auth%20/presentation/screens/select_screen.dart';
 import 'package:datting_app/features/auth%20/presentation/screens/sign_in_screen.dart';
 import 'package:datting_app/features/auth%20/presentation/screens/verify_screen.dart';
+
 import 'package:datting_app/features/shared%20/presentation/screens/app_setting.dart';
-import 'package:datting_app/features/shared%20/presentation/screens/app_setting2.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/app_setting2.dart' show AppSetting2Screen;
 import 'package:datting_app/features/shared%20/presentation/screens/chat_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/contact_us.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/home_page_screen.dart';
+import 'package:datting_app/features/shared%20/presentation/screens/likes_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_profile.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/match_screen.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/message_Screen.dart';
@@ -20,21 +22,21 @@ import 'package:datting_app/features/shared%20/presentation/screens/onboarding/o
 import 'package:datting_app/features/shared%20/presentation/screens/privacy_policy.dart';
 import 'package:datting_app/features/shared%20/presentation/screens/string_premium.dart';
 import 'package:datting_app/features/shared%20/presentation/splash_screen.dart';
+
 import 'package:datting_app/shared/widgets/pageview/onboarding_pageview.dart';
 import 'package:go_router/go_router.dart';
 
-
-class RouteNames{
+class RouteNames {
   static const onboard = 'onboard';
   static const login = 'login';
-  static const createAccount ='createAccount';
-  static const enterNum =' enterNum';
+  static const createAccount = 'createAccount';
+  static const enterNum = 'enterNum';
   static const splash = 'splash';
-  static const signIn ='signIn';
-  static const opt ='opt';
-  static const genderSelector ='genderSelector';
-  static const birthday ='birthday';
-  static const onboard2 ='oonboard2';
+  static const signIn = 'signIn';
+  static const opt = 'opt';
+  static const genderSelector = 'genderSelector';
+  static const birthday = 'birthday';
+  static const onboard2 = 'onboard2';
   static const verify = 'verify';
   static const addPhoto = 'addPhoto';
   static const selectScreen = 'selectScreen';
@@ -44,17 +46,17 @@ class RouteNames{
   static const stringPremium = 'stringPremium';
   static const appSettings = 'appSettings';
   static const appSettings2 = 'appSettings2';
-  static const contact ='contact';
-  static const privacy =' privacy';
-   static const messages =' messages';
-   static const chatscreen =' chatscreen';
+  static const contact = 'contact';
+  static const privacy = 'privacy';
+  static const messages = 'messages';
+  static const chatscreen = 'chatscreen';
+  static const likes = 'likes'; // New route name
 }
 
-final GoRouter router =GoRouter(
+final GoRouter router = GoRouter(
   initialLocation: '/messages',
-  
-  routes:[
-  GoRoute(
+  routes: [
+    GoRoute(
       path: '/splash',
       name: RouteNames.splash,
       builder: (context, state) =>  SplashScreen(),
@@ -62,114 +64,117 @@ final GoRouter router =GoRouter(
     GoRoute(
       path: '/onboard',
       name: RouteNames.onboard,
-      builder: (context, state) =>  OnboardingScreen(),
+      builder: (context, state) => const OnboardingScreen(),
     ),
     GoRoute(
       path: '/login',
       name: RouteNames.login,
-      builder: (context, state) => LoginScreen(),
+      builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
       path: '/createAccount',
       name: RouteNames.createAccount,
-      builder: (context, state) =>  CreateAccountScreen(),
-
+      builder: (context, state) => const CreateAccountScreen(),
     ),
     GoRoute(
       path: '/enterNum',
       name: RouteNames.enterNum,
-      builder: (context, state) => EnterNumScreen(),
+      builder: (context, state) => const EnterNumScreen(),
     ),
     GoRoute(
       path: '/signIn',
       name: RouteNames.signIn,
-      builder: (context, state) =>  SignInScreen(),
+      builder: (context, state) => const SignInScreen(),
     ),
     GoRoute(
       path: '/opt',
       name: RouteNames.opt,
-      builder: (context, state) =>  OptScreen(),
+      builder: (context, state) => const OptScreen(),
     ),
     GoRoute(
       path: '/genderSelector',
       name: RouteNames.genderSelector,
-      builder: (context, state) =>  GenderSelectorScreen(),
+      builder: (context, state) => const GenderSelectorScreen(),
     ),
-     GoRoute(
+    GoRoute(
       path: '/birthday',
       name: RouteNames.birthday,
-      builder: (context, state) =>  BirthdayScreen(),
+      builder: (context, state) => const BirthdayScreen(),
     ),
-    
     GoRoute(
       path: '/onboard2',
       name: RouteNames.onboard2,
-      builder: (context, state) =>  OnboardingScreen3(),
+      builder: (context, state) => const OnboardingScreen3(),
     ),
-     
     GoRoute(
       path: '/verify',
       name: RouteNames.verify,
-      builder: (context, state) =>  VerifyScreen(),
+      builder: (context, state) => const VerifyScreen(),
     ),
-     
     GoRoute(
       path: '/addPhoto',
       name: RouteNames.addPhoto,
-      builder: (context, state) =>  AddPhotoScreen(),
+      builder: (context, state) => const AddPhotoScreen(),
     ),
-     
     GoRoute(
       path: '/selectScreen',
       name: RouteNames.selectScreen,
-      builder: (context, state) => SelectScreen(),
+      builder: (context, state) => const SelectScreen(),
     ),
     GoRoute(
       path: '/home',
       name: RouteNames.home,
-      builder: (context, state) =>HomePageScreen(),
+      builder: (context, state) => const HomePageScreen(),
     ),
     GoRoute(
       path: '/match',
       name: RouteNames.match,
-      builder: (context, state) =>MatchProfileScreen(),
+      builder: (context, state) => const MatchProfileScreen(),
     ),
     GoRoute(
       path: '/matchScreen',
       name: RouteNames.matchScreen,
-      builder: (context, state) =>MatchScreen(),
+      builder: (context, state) => const MatchScreen(),
     ),
-    
-     GoRoute(
+    GoRoute(
       path: '/stringPremium',
       name: RouteNames.stringPremium,
-      builder: (context, state) =>StringPremiumScreen(),
+      builder: (context, state) => const StringPremiumScreen(),
     ),
-     GoRoute(
+    GoRoute(
       path: '/appSettings',
       name: RouteNames.appSettings,
-      builder: (context, state) =>AppSettingScreen(),
+      builder: (context, state) => const AppSettingScreen(),
     ),
     GoRoute(
       path: '/appSettings2',
       name: RouteNames.appSettings2,
-      builder: (context, state) =>AppSetting2Screen(),
+      builder: (context, state) => const AppSetting2Screen(),
     ),
     GoRoute(
       path: '/contact',
       name: RouteNames.contact,
-      builder: (context, state) =>ContactUsScreen(),
+      builder: (context, state) => const ContactUsScreen(),
     ),
     GoRoute(
       path: '/privacy',
       name: RouteNames.privacy,
-      builder: (context, state) =>PrivacyPolicyScreen(),
+      builder: (context, state) => const PrivacyPolicyScreen(),
     ),
-    GoRoute(path: '/messages',name: RouteNames.messages,builder: (context, state)=>MessageScreen()),
-
-    GoRoute(path: '/chatscreen',name: RouteNames.chatscreen,builder: (context, state)=>ChatScreen()),
-    
-    
-    
-  ]
-   );
+    GoRoute(
+      path: '/messages',
+      name: RouteNames.messages,
+      builder: (context, state) => const MessageScreen(),
+    ),
+    GoRoute(
+      path: '/chatscreen',
+      name: RouteNames.chatscreen,
+      builder: (context, state) => const ChatScreen(),
+    ),
+    GoRoute(
+      path: '/likes',
+      name: RouteNames.likes,
+      builder: (context, state) => const LikesScreen(),
+    ),
+  ],
+);

@@ -1,6 +1,5 @@
 import 'package:datting_app/core/theme/app_colors.dart';
 import 'package:datting_app/features/shared%20/presentation/widgets/icon_text_button.dart';
-import 'package:datting_app/features/shared%20/widgets/custom_post_widget.dart';
 import 'package:datting_app/shared/widgets/buttons/back_button.dart';
 import 'package:datting_app/shared/widgets/buttons/bottom_navbar.dart';
 import 'package:datting_app/shared/widgets/container/custom_positioned_circle.dart';
@@ -9,14 +8,14 @@ import 'package:datting_app/shared/widgets/inputs/app_inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class MessageScreen extends StatefulWidget {
-  const MessageScreen({super.key});
+class LikesScreen extends StatefulWidget {
+  const LikesScreen({super.key});
 
   @override
-  _MessageScreenState createState() => _MessageScreenState();
+  _LikesScreenState createState() => _LikesScreenState();
 }
 
-class _MessageScreenState extends State<MessageScreen> {
+class _LikesScreenState extends State<LikesScreen> {
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -74,7 +73,7 @@ class _MessageScreenState extends State<MessageScreen> {
                     height: 48,
                     controller: searchController,
                     type: InputType.text,
-                    hintText: 'Search for peoples and chats',
+                    hintText: 'Search for peoples and likes',
                     hintFontFamily: 'Regular',
                     hintFontSize: 13,
                     keyboardType: TextInputType.text,
@@ -87,10 +86,10 @@ class _MessageScreenState extends State<MessageScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: [
-                        const Text('Messages', style: TextStyle(fontFamily: 'Regular', fontSize: 20)),
+                        const Text('Matches', style: TextStyle(fontFamily: 'Regular', fontSize: 20)),
                         const SizedBox(width: 10),
                         CustomPositionedCircle(
-                          text: '12',
+                          text: '62',
                           textColor: Colors.white,
                           top: 5,
                           left: 100,
@@ -100,28 +99,6 @@ class _MessageScreenState extends State<MessageScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: List.generate(8, (index) => Column(
-                        children: [
-                          CustomPostWidget(
-                            backgroundImage: const AssetImage('assets/images/groupp.png'),
-                            titleText: 'T.E.C.H_uma',
-                            timeText: '5 min ago',
-                            timeTextColor: const Color(0xff4285f4),
-                            descriptionText: 'Awesome what kind of stuff do you...',
-                            showPositionedCircle: true,
-                            circleText: '03',
-                            circleColor: Colors.blue,
-                            circleTextColor: Colors.white,
-                          ),
-                          const SizedBox(height: 20),
-                        ],
-                      )),
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -129,7 +106,7 @@ class _MessageScreenState extends State<MessageScreen> {
         ),
       ),
       bottomNavigationBar: CustomBottomNavBar(
-        selectedIndex: 2, // Messages tab
+        selectedIndex: 2, // Same index as Messages for consistency
         onItemTapped: (index) {
           switch (index) {
             case 0:
