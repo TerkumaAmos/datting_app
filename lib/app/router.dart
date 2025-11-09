@@ -54,7 +54,7 @@ class RouteNames {
 }
 
 final GoRouter router = GoRouter(
-  initialLocation: '/messages',
+  initialLocation: '/matchScreen',
   routes: [
     GoRoute(
       path: '/splash',

@@ -36,10 +36,10 @@ class _ChatScreenState extends State<ChatScreen> {
             Image.asset(
               'assets/images/Groupp 28.png',
               width: 58,
-              height: 58, // Added height for consistency
+              height: 58, 
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return const Icon(Icons.error); // Show error if image fails
+                return const Icon(Icons.error);
               },
             ),
             const SizedBox(width: 10),

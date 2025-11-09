@@ -23,7 +23,7 @@ class _LikesScreenState extends State<LikesScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
-      appBar: AppBar(
+      appBar: AppBar( 
         leading: CustomBackButton(
           svgPath: 'assets/icons/Frame1.svg',
           color: AppColors.black,
@@ -106,7 +106,7 @@ class _LikesScreenState extends State<LikesScreen> {
         ),
       ),
       bottomNavigationBar: CustomBottomNavBar(
-        selectedIndex: 2, // Same index as Messages for consistency
+        selectedIndex: 2,
         onItemTapped: (index) {
           switch (index) {
             case 0:

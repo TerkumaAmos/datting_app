@@ -86,7 +86,7 @@ class SelectScreen extends StatelessWidget {
                     SizedBox(height: 20),
 
                     Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                       children: [
                         CircleAvatarField(
@@ -125,7 +125,6 @@ class SelectScreen extends StatelessWidget {
                                     color: Colors.black, // Black color
                                   ),
                                 ),
-                               // SvgPicture.asset("assets/Vector 9.svg"),
                                 SizedBox(height: 20),
                                 _buildCustomOption(context, 'assets/icons/Group (1).svg', 'Take a photo',   () {
                                     Navigator.pop(context);

@@ -21,7 +21,7 @@ class _OptScreenState extends State<OptScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      extendBodyBehindAppBar: true, // Key: Extend the body behind the AppBar
+      extendBodyBehindAppBar: true, 
       appBar: AppBar(
         leading: CustomBackButton(
           svgPath: 'assets/icons/Frame1.svg',
