@@ -8,6 +8,7 @@ import 'package:datting_app/shared/widgets/gradient/app_gradient.dart';
 import 'package:datting_app/shared/widgets/inputs/app_inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:datting_app/features/shared /presentation/screens/likes_screen.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -18,6 +19,23 @@ class MessageScreen extends StatefulWidget {
 
 class _MessageScreenState extends State<MessageScreen> {
   TextEditingController searchController = TextEditingController();
+  bool _isMessageClicked = true;
+  bool _isLikesClicked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // If someone navigates to /messages?tab=likes we should show Likes tab
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final tab = Uri.base.queryParameters['tab'];
+      if (tab == 'likes') {
+        setState(() {
+          _isLikesClicked = true;
+          _isMessageClicked = false;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,75 +70,105 @@ class _MessageScreenState extends State<MessageScreen> {
                       IconTextButton(
                         icon: Icons.message,
                         text: 'Messages',
-                        isSelected: GoRouterState.of(context).uri.toString() == '/messages',
+                        isSelected: _isMessageClicked,
                         onTap: () {
-                          context.go('/messages');
+                          setState(() {
+                            _isMessageClicked = true;
+                            _isLikesClicked = false;
+                          });
                         },
                       ),
                       const SizedBox(width: 16),
                       IconTextButton(
                         icon: Icons.favorite,
                         text: 'Likes',
-                        isSelected: GoRouterState.of(context).uri.toString() == '/likes',
+                        isSelected: _isLikesClicked,
                         onTap: () {
-                          context.go('/likes');
+                          setState(() {
+                            _isLikesClicked = true;
+                            _isMessageClicked = false;
+                          });
                         },
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
-                  CustomInput(
-                    width: 370,
-                    height: 48,
-                    controller: searchController,
-                    type: InputType.text,
-                    hintText: 'Search for peoples and chats',
-                    hintFontFamily: 'Regular',
-                    hintFontSize: 13,
-                    keyboardType: TextInputType.text,
-                    borderRadius: 10,
-                    prefixIcon: const Icon(Icons.search, size: 20, color: AppColors.black),
-                    validator: (value) => null,
-                  ),
+                  // Show search input only when Messages tab is active.
+                  if (_isMessageClicked)
+                    CustomInput(
+                      width: 370,
+                      height: 48,
+                      controller: searchController,
+                      type: InputType.text,
+                      hintText: 'Search for peoples and chats',
+                      hintFontFamily: 'Regular',
+                      hintFontSize: 13,
+                      keyboardType: TextInputType.text,
+                      borderRadius: 10,
+                      prefixIcon: const Icon(Icons.search, size: 20, color: AppColors.black),
+                      validator: (value) => null,
+                    ),
+                  if (!_isMessageClicked) const SizedBox(height: 0),
                   const SizedBox(height: 20),
+                  // Header and badge
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: [
-                        const Text('Messages', style: TextStyle(fontFamily: 'Regular', fontSize: 20)),
-                        const SizedBox(width: 10),
-                        CustomPositionedCircle(
-                          text: '12',
-                          textColor: Colors.white,
-                          top: 5,
-                          left: 100,
-                          width: 30,
-                          height: 30,
+                        Text(
+                          _isLikesClicked ? 'Likes' : 'Messages',
+                          style: const TextStyle(fontFamily: 'Regular', fontSize: 20),
                         ),
+                        const SizedBox(width: 10),
+                        if (_isMessageClicked)
+                          CustomPositionedCircle(
+                            text: '12',
+                            textColor: Colors.white,
+                            top: 5,
+                            left: 8,
+                            width: 30,
+                            height: 30,
+                          )
+                        else
+                          CustomPositionedCircle(
+                            text: '62',
+                            textColor: Colors.white,
+                            top: 5,
+                            left: 8,
+                            width: 30,
+                            height: 30,
+                          ),
                       ],
                     ),
                   ),
+
+                  // Content area: show messages or likes based on state
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: List.generate(8, (index) => Column(
-                        children: [
-                          CustomPostWidget(
-                            backgroundImage: const AssetImage('assets/images/groupp.png'),
-                            titleText: 'T.E.C.H_uma',
-                            timeText: '5 min ago',
-                            timeTextColor: const Color(0xff4285f4),
-                            descriptionText: 'Awesome what kind of stuff do you...',
-                            showPositionedCircle: true,
-                            circleText: '03',
-                            circleColor: Colors.blue,
-                            circleTextColor: Colors.white,
+                    child: _isLikesClicked
+                        ? const LikesContent()
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: List.generate(
+                              8,
+                              (index) => Column(
+                                children: [
+                                  CustomPostWidget(
+                                    backgroundImage: const AssetImage('assets/images/groupp.png'),
+                                    titleText: 'T.E.C.H_uma',
+                                    timeText: '5 min ago',
+                                    timeTextColor: const Color(0xff4285f4),
+                                    descriptionText: 'Awesome what kind of stuff do you...',
+                                    showPositionedCircle: true,
+                                    circleText: '03',
+                                    circleColor: Colors.blue,
+                                    circleTextColor: Colors.white,
+                                  ),
+                                  const SizedBox(height: 20),
+                                ],
+                              ),
+                            ),
                           ),
-                          const SizedBox(height: 20),
-                        ],
-                      )),
-                    ),
                   ),
                 ],
               ),
