@@ -127,17 +127,17 @@ class _LikesContentState extends State<LikesContent> {
                 ),
               ),
               // Small badge positioned inline with the header
-              Padding(
-                padding: const EdgeInsets.only(left: 20, top: 6),
-                child: CustomPositionedCircle(
-                  text: '62',
-                  textColor: Colors.white,
-                  top: 0,
-                  left: 8,
-                  width: 30,
-                  height: 30,
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 20, top: 6),
+              //   child: CustomPositionedCircle(
+              //     text: '62',
+              //     textColor: Colors.white,
+              //     top: 0,
+              //     left: 8,
+              //     width: 30,
+              //     height: 30,
+              //   ),
+              // ),
               const SizedBox(height: 12),
               // Likes list
               ...List.generate(
