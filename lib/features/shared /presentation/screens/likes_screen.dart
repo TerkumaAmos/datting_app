@@ -1,9 +1,7 @@
 import 'package:datting_app/core/theme/app_colors.dart';
-import 'package:datting_app/features/shared%20/widgets/custom_post_widget.dart';
 import 'package:datting_app/shared/widgets/buttons/back_button.dart';
 import 'package:datting_app/shared/widgets/buttons/bottom_navbar.dart';
 import 'package:datting_app/shared/widgets/gradient/app_gradient.dart';
-import 'package:datting_app/shared/widgets/container/custom_positioned_circle.dart';
 import 'package:datting_app/shared/widgets/inputs/app_inputs.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -91,7 +89,7 @@ class _LikesContentState extends State<LikesContent> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 48),
+        // small top spacing to sit below the app bar
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -116,46 +114,12 @@ class _LikesContentState extends State<LikesContent> {
                 validator: (value) => null,
               ),
               const SizedBox(height: 12),
-              // Header and badge (Matches / Likes count)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: const [
-                    Text('Matches', style: TextStyle(fontFamily: 'Regular', fontSize: 20)),
-                    SizedBox(width: 10),
-                  ],
-                ),
+              Text(
+                'Matches',
+                style: TextStyle(fontFamily: 'Bold', fontSize: 24, color: AppColors.black),
               ),
-              // Small badge positioned inline with the header
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 20, top: 6),
-              //   child: CustomPositionedCircle(
-              //     text: '62',
-              //     textColor: Colors.white,
-              //     top: 0,
-              //     left: 8,
-              //     width: 30,
-              //     height: 30,
-              //   ),
-              // ),
-              const SizedBox(height: 12),
-              // Likes list
-              ...List.generate(
-                6,
-                (index) => Column(
-                  children: [
-                    CustomPostWidget(
-                      backgroundImage: const AssetImage('assets/images/groupp.png'),
-                      titleText: 'Liked by User $index',
-                      timeText: 'Just now',
-                      timeTextColor: const Color(0xff4285f4),
-                      descriptionText: 'They liked your profile',
-                      showPositionedCircle: false,
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-              ),
+             
+              
             ],
           ),
         ),

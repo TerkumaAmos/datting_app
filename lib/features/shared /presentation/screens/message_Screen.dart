@@ -3,7 +3,6 @@ import 'package:datting_app/features/shared%20/presentation/widgets/icon_text_bu
 import 'package:datting_app/features/shared%20/widgets/custom_post_widget.dart';
 import 'package:datting_app/shared/widgets/buttons/back_button.dart';
 import 'package:datting_app/shared/widgets/buttons/bottom_navbar.dart';
-import 'package:datting_app/shared/widgets/container/custom_positioned_circle.dart';
 import 'package:datting_app/shared/widgets/gradient/app_gradient.dart';
 import 'package:datting_app/shared/widgets/inputs/app_inputs.dart';
 import 'package:flutter/material.dart';
@@ -109,40 +108,31 @@ class _MessageScreenState extends State<MessageScreen> {
                       validator: (value) => null,
                     ),
                   if (!_isMessageClicked) const SizedBox(height: 0),
-                  const SizedBox(height: 20),
-                  // Header and badge
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          _isLikesClicked ? 'Likes' : 'Messages',
-                          style: const TextStyle(fontFamily: 'Regular', fontSize: 20),
-                        ),
-                        const SizedBox(width: 10),
-                        if (_isMessageClicked)
-                          CustomPositionedCircle(
-                            text: '12',
-                            textColor: Colors.white,
-                            top: 5,
-                            left: 8,
-                            width: 30,
-                            height: 30,
-                          )
-                        else
-                          CustomPositionedCircle(
-                            text: '62',
-                            textColor: Colors.white,
-                            top: 5,
-                            left: 8,
-                            width: 30,
-                            height: 30,
+                  const SizedBox(height: 12),
+                  // Matches header with small yellow badge (only for Messages)
+                  if (_isMessageClicked)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          const Text('Matches', style: TextStyle(fontFamily: 'Regular', fontSize: 20)),
+                          const SizedBox(width: 8),
+                          Container(
+                            width: 24,
+                            height: 24,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFFFD700), // small yellow circle
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Center(
+                              child: Text('12', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+                            ),
                           ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-
-                  // Content area: show messages or likes based on state
+                  const SizedBox(height: 12),
+                 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: _isLikesClicked
